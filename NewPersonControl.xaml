@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="PersonasVistas.NewPersonControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PersonasVistas"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Width" Value="200"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel>
+        <Label>Nombre</Label>
+        <TextBox Text="{Binding Path=NuevaPersona.Nombre, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Label>Edad</Label>
+        <TextBox Text="{Binding Path=NuevaPersona.Edad, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Label>Nacionalidad</Label>
+        <StackPanel Orientation="Horizontal">
+            <ComboBox Width="125" Margin="5" ItemsSource="{Binding Path=TiposNacionalidad}" SelectedItem="{Binding Path=NuevaPersona.Nacionalidad, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+            <Button Height="20" Width="20" x:Name="addButton" Command="{Binding Path=AbrirVentanaNacionalidadCommand}">+</Button>
+        </StackPanel>
+        <Button HorizontalAlignment="Center" Command="{Binding Path= AceptarNuevaPersonaCommand}" Click="Button_Click">Aceptar</Button>
+    </StackPanel>
+</UserControl>
